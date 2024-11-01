@@ -10,6 +10,9 @@ REPO: https://github.com/madhavthaker/spotify-recommendation-system/tree/main
 New dataset:
 https://www.kaggle.com/datasets/yamaerenay/spotify-dataset-19212020-600k-tracks
 
+Generate recs from Login:
+https://www.kaggle.com/code/romanniki/generating-recommendations-from-ur-spotify-acc
+
 ### Topic 2
 
 ### Topic 3
