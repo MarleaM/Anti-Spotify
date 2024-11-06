@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from frontend import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #for all requests that start with frontend
-    path('frontend/', include('frontend.urls'))
+    path('frontend/', include('frontend.urls')),
+    path('',views.index)
 ]

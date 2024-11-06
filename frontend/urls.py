@@ -5,3 +5,7 @@ from . import views
 urlpatterns = [
     path('hello/', views.say_hello)
 ]
+
+urlpatterns = [
+    path('index/', views.index)
+]
