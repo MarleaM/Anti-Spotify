@@ -31,7 +31,7 @@ const Banner = () => {
                             <input 
                                 type="text" 
                                 placeholder="Enter a song" 
-                                value={searchSong}
+                                //value={searchSong}
                                 //onChange={handleInput} this will be for when we do our api call
                             />
                             <button onClick={getQuote}>
