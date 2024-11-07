@@ -1,0 +1,18 @@
+body {
+  background-image: url('./assets/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;       
+}
+
+/*quote thing for demo*/
+
+h1{
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  font-size: 80px;
+  margin-bottom: 40px;
+  display: inline-block;
+  color: aliceblue !important;
+  padding: 50px 60px;
+}

@@ -1,0 +1,72 @@
+/* Anti-Spotify Header*/
+
+.banner {
+  margin-top: 0;
+  padding: 260px 0 100px 0;
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+.banner .tagline {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  font-size: 80px;
+  margin-bottom: 40px;
+  display: inline-block;
+  color: aliceblue;
+  background-image: url('./assets/circle.png');
+  background-size: cover; 
+  background-position: center;
+  padding: 50px 60px;
+
+}
+
+/* Placing the X on top of Anti*/
+.tagline {
+  position: relative; 
+  display: inline-block; 
+}
+
+.tagline::before {
+  content: "";
+  position: absolute;
+  top: 30%; 
+  left: 5%; 
+  width: 40%; 
+  height: 40%;
+  background-image: url('./assets/ex.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+}
+
+/* Input area */
+.input-container input{
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  width: 500px;
+  padding: .75rem;  
+  margin-right: 10px;  
+  caret-color: rgba(255, 255, 255, 0.6);  
+  color: #ffffff;
+}
+
+/* Button */
+.input-container button {
+  background: rgba(255, 255, 255, 0.2);  
+  color: #fff;  
+  border: 1px solid rgba(255, 255, 255, 0.3);;  
+  border-radius: 10px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;  
+  padding: 0.75rem;  
+  margin-left: 10px;
+}
+
+.input-container button:hover {
+  background-color: white;  
+  color: #000;  
+}
+
