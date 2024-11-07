@@ -2,7 +2,7 @@
 
 .banner {
   margin-top: 0;
-  padding: 260px 0 100px 0;
+  padding: 0 0 100px 0;
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -70,3 +70,6 @@
   color: #000;  
 }
 
+.github-button {
+  padding: 1% 5% 5% 5%;
+}
