@@ -2,12 +2,12 @@ import { FaGithub } from "react-icons/fa";
 
 
 const Navbar = () => {
-    return (
-        <a href ="https://github.com/MarleaM/OSS_Project" target ="_blank" >
-            <div className="github-button" style = {{color: "white"}}>
-                <FaGithub size = {65}/>
-            </div>
-        </a>
+    return ( 
+        <div className="github-button" style = {{color: "white"}}>
+            <a href ="https://github.com/MarleaM/OSS_Project" target ="_blank">
+                <FaGithub size = {65} color = "white"/>
+            </a>
+        </div>
     )
 };
     
