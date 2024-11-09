@@ -26,7 +26,15 @@ const Banner = () => {
             <Container>
                 <Row className = "align-items-center">
                     <Col>
-                        <span className="tagline"> Anti-Spotify </span>
+                        <span 
+                            className="tagline" 
+                            style={{ 
+                                pointerEvents: 'none',
+                                userSelect: 'none'
+                            }}
+                        >
+                            Anti-Spotify
+                        </span>
                         <div className="input-container">
                             <input 
                                 type="text" 
@@ -34,7 +42,11 @@ const Banner = () => {
                                 //value={searchSong}
                                 //onChange={handleInput} this will be for when we do our api call
                             />
-                            <button onClick={getQuote}>
+                            <button onClick={getQuote}
+                                style={{
+                                    userSelect: 'none'
+                                }}
+                            >
                                 Search
                             </button>
                             { quote ? <h1>{quote}</h1> : null }
