@@ -12,15 +12,17 @@ const Banner = () => {
         setSearchSong(event.target.value);
     };
     */
+
     const getQuote = () => {
-        axios.get('http://api.quotable.io/random')
+        axios.get('http://localhost:8080/api/users')
         .then(response => {
-            console.log(response.data.content) /** get just the quote */
-            setQuote(response.data.content)
+            console.log(response.data.users) /* now this is getting information from a python script in the backend */
+            setQuote(response.data.users)
         }).catch(err => {
             console.log(err)
         })
     }
+    
     return (
         <section className="banner" id="home">
             <Container>
