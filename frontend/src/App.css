@@ -73,3 +73,30 @@
 .github-button {
   padding: 3% 5% 5% 3%;
 }
+
+/* title*/
+
+.title{
+  padding-top: 10%;
+}
+
+/* tiles */
+
+.tileRow {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.tile {
+  margin: 10px;
+  color: rgb(190, 219, 229);
+  padding: 20px;
+  min-width: 200px; 
+  min-height: 200px; 
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}

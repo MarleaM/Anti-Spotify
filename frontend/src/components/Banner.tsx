@@ -2,22 +2,20 @@ import React from "react";
 import {useState} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
 import axios from 'axios';
+import anti_song_column from "./AntiSongColumn.tsx";
+import AntiSongColumn from "./AntiSongColumn.tsx";
 
 
 const Banner = () => {
-    const [quote, setQuote] = useState('');
+    const [antiSongs, setAntiSongs] = useState<string[]>([]);
     const [searchSong, setSearchSong] = useState('');
-    /*
-    const handleInput = (event) => {
-        setSearchSong(event.target.value);
-    };
-    */
 
-    const getQuote = () => {
+
+    const getAntiSongs = () => {
         axios.get('http://localhost:8080/api/users')
         .then(response => {
             console.log(response.data.users) /* now this is getting information from a python script in the backend */
-            setQuote(response.data.users)
+            setAntiSongs(response.data.users)
         }).catch(err => {
             console.log(err)
         })
@@ -41,17 +39,15 @@ const Banner = () => {
                             <input 
                                 type="text" 
                                 placeholder="Enter a song" 
-                                //value={searchSong}
-                                //onChange={handleInput} this will be for when we do our api call
                             />
-                            <button onClick={getQuote}
+                            <button onClick={getAntiSongs}
                                 style={{
                                     userSelect: 'none'
                                 }}
                             >
                                 Search
                             </button>
-                            { quote ? <h1>{quote}</h1> : null }
+                            {antiSongs.length > 0 && <AntiSongColumn antiSongs={antiSongs} />}
                         </div>
                     </Col>
                 </Row>
