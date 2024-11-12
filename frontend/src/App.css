@@ -74,13 +74,9 @@
   padding: 3% 5% 5% 3%;
 }
 
-/* title*/
-
 .title{
   padding-top: 10%;
 }
-
-/* tiles */
 
 .tileRow {
   display: flex;
@@ -99,4 +95,77 @@
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-end; 
+  padding: 20px;
+  position: relative;
+  height: 100%; 
+  min-height: 100vh;
+}
+
+.footer-box {
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  color: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+.top {
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.visit-contribute-repository {
+  font-weight: bold;
+  display: block;
+}
+
+.made-with-love {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.bottom {
+  margin-top: 20px;
+}
+
+.get-involved {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+  text-decoration: underline;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  gap: 10px;
+}
+
+.documentation, .code-of-conduct, .contributing-guidelines {
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.documentation:hover, .code-of-conduct:hover, .contributing-guidelines:hover {
+  color: #f694ff;
 }
