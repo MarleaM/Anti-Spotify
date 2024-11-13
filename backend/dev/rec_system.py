@@ -19,7 +19,7 @@ file_path = "./spotify-2023.csv"
 df = pd.read_csv(file_path, encoding='iso-8859-2')
 
 features = df.columns.tolist()
-print(features)
+# print(features)
 cols_to_convert = ['streams', 'in_deezer_playlists' , 'in_spotify_playlists', 'in_shazam_charts', 'key', 'mode']
 
 for col in cols_to_convert:
