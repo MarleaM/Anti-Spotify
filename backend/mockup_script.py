@@ -21,37 +21,37 @@ def get_songs():
                 {
                     "song_name": "Evil Lisa's Song",
                     "artist": "Lisa",
-                    "album_cover": "url/to/album_cover1.jpg"
+                    "album_cover": "/static/assets/sample_background.png"
                 },
                 {
                     "song_name": "Evil Tony's Song",
                     "artist": "Tony",
-                    "album_cover": "url/to/album_cover2.jpg"
+                    "album_cover": "/static/assets/sample_background.png"
                 },
                 {
                     "song_name": "Evil Emily's Song",
                     "artist": "Emily",
-                    "album_cover": "url/to/album_cover3.jpg"
+                    "album_cover": "/static/assets/sample_background.png"
                 },
                 {
                     "song_name": "Evil Marlea's Song",
                     "artist": "Marlea",
-                    "album_cover": "url/to/album_cover4.jpg"
+                    "album_cover": "/static/assets/sample_background.png"
                 },
                                 {
                     "song_name": "Lisa's Song",
                     "artist": "Lisa",
-                    "album_cover": "url/to/album_cover1.jpg"
+                    "album_cover": "/static/assets/sample_background.png"
                 },
                 {
                     "song_name": "Tony's Song",
                     "artist": "Tony",
-                    "album_cover": "url/to/album_cover2.jpg"
+                    "album_cover": "/static/assets/sample_background.png"
                 },
                 {
                     "song_name": "Emily's Song",
                     "artist": "Emily",
-                    "album_cover": "url/to/album_cover3.jpg"
+                    "album_cover": "/static/assets/sample_background.png"
                 },
                 {
                 "song_name": "Evil Marlea's Song",

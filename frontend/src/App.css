@@ -87,14 +87,14 @@
   padding: 20px;
   position: relative;
   height: 100%; 
-  min-height: 100vh;
+  min-height: 70vh;
 }
 
 .footer-box {
   width: 90%;
   max-width: 800px;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   color: #ffffff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -103,34 +103,23 @@
   gap: 20px;
   text-align: center;
 }
-.top {
-  text-align: center;
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
 
-.visit-contribute-repository {
+.contribute {
   font-weight: bold;
   display: block;
+  padding-top: 10px;
 }
 
-.made-with-love {
+.love {
+  padding-top: 10px;
   font-size: 14px;
   font-style: italic;
-  margin-top: 10px;
-}
-
-.bottom {
-  margin-top: 20px;
 }
 
 .get-involved {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-top: 20px;
   display: block;
   text-decoration: underline;
 }
@@ -142,18 +131,18 @@
   gap: 10px;
 }
 
-.documentation, .code-of-conduct, .contributing-guidelines {
+.links-content{
   font-size: 16px;
   cursor: pointer;
   color: #ffffff;
   text-decoration: none;
 }
 
-.documentation:hover, .code-of-conduct:hover, .contributing-guidelines:hover {
+.links-content:hover{
   color: #f694ff;
 }
 
-/* song card */
+/* Loading Songs */
 
 .song-row {
   display: flex;              
@@ -161,6 +150,7 @@
   align-items: center;                
 }
 
+/* Individual Song Cards */
 .song-card {
   margin: 10px;
   color: rgb(190, 219, 229);
@@ -179,4 +169,8 @@
   height: 100%; 
   object-fit: cover; 
   border-radius: 12px;  
+}
+
+.song_info{
+  padding-top: 10px;
 }
