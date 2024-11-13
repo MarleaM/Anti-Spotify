@@ -29,7 +29,7 @@ const Banner = () => {
             <Container>
                 <Row className = "align-items-center">
                     <Col>
-                        <span className="tagline" >
+                        <span className="tagline">
                             Anti-Spotify
                         </span>
                         <div className="input-container">

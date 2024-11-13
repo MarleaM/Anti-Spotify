@@ -11,7 +11,9 @@ const Footer = () => {
                     This project was made with love by Emily, Lisa, Tony, and Marlea ♡
                 </span>
 
-                <span className="get-involved">Get Involved</span>
+                <span className="get-involved">
+                    Get Involved
+                </span>
                 <div className="links-container">
                     <a className="links-content" href="https://github.com/MarleaM/OSS_Project" target="_blank">
                         <span> Documentation </span>
