@@ -2,6 +2,8 @@
 
 blah blah blah git clone stuff
 
+Make sure to do the setup steps in this order.
+
 ### Backend
 
 We recomend setting up a virtual environment for installing your python dependencies.
@@ -61,5 +63,5 @@ npm run dev
 
 Now, you should be ready!
 
-
+ctrl + click on the link in your terminal, and you will be able to access the site.
 
