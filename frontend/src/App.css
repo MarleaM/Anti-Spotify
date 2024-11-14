@@ -129,7 +129,6 @@
   font-weight: bold;
   margin-top: 20px;
   display: block;
-  text-decoration: underline;
   pointer-events: none;
   user-select: none;
 }
@@ -148,6 +147,7 @@
   user-select: none;
   position: relative;
   overflow: hidden; 
+  text-decoration: underline;
 }
 
 .links-content:hover{
