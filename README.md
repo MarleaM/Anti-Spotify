@@ -1,2 +1,2 @@
-# Spotify Anti-Recommendation 
-Input your favorite songs from Spotify and get your least recommended song 😈
+# Anti-Spotify 
+Input a song from Spotify and get 4 least recommended songs and 4 most recommended songs!

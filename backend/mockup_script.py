@@ -6,7 +6,7 @@ cors = CORS(app, origins='*')
 #this is an example to see how a python script would send data to the frontend
 #if you are trying to run this, make sure to use a virtual environment! :) 
 #note: the following commands are for windows
-
+# python3 -m venv virtual_environment
 #activate with this command: virtual_environment/Scripts/activate
 #to run the script do: python mockup_script.py
 #you can see the returned JSON on http://localhost:8080/api/users
