@@ -1,4 +1,4 @@
-from spotAPI_base import sp
+from dev.spotAPI_base import sp
 
 def get_thumbnail_url(track_name, artist_name):
     query = f"{track_name} {artist_name}"

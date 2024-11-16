@@ -1,5 +1,5 @@
-from spotAPI_base import *
-from spotAPI_minehelper import get_playlist_id, get_thumbnail_url
+from dev.spotAPI_base import *
+from dev.spotAPI_minehelper import get_playlist_id, get_thumbnail_url
 
 playlist_urls = [
     # 'https://open.spotify.com/playlist/2YRe7HRKNRvXdJBp9nXFza',

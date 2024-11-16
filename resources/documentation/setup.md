@@ -16,7 +16,7 @@ CD into backend, your path should look something like:
 
 Run this command to setup your virtual environment:
 ```python
-python3 -m venv name_for_your_virtual_environment #for this example, we called it virtual_environment
+python3 -m venv virtual_environment #for this example, we called our virtual environment "virtual_environment"
 ```
 When the environemt is done setting up, run this command to activate it:
 
@@ -28,7 +28,7 @@ virtual_environment/Scripts/activate
 mac:
 
 ```python
-source/virtual_environment/bin/activate
+source virtual_environment/bin/activate
 ```
 
 Now, you must install the packages:
@@ -36,10 +36,15 @@ Now, you must install the packages:
 ```python
 pip install Flask
 pip install Flask_CORS
+pip install spotipy
+pip install python-dotenv
+pip install pandas
+pip install seaborn
+pip install scikit-learn
 ```
 Then, run the script:
 ```python
-python mockup_script.py
+python3 mockup_script.py
 ```
 
 Now, your backend virtual environment is set up.

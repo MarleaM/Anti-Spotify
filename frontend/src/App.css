@@ -56,6 +56,13 @@
   color: #ffffff;
 }
 
+.tagline, .searched-song {
+  color: white;
+  font-size: 1.5rem; /* Adjust font size as needed */
+  font-weight: bold; /* Make it bold if needed */
+  margin-top: 10px; /* Add some spacing if desired */
+}
+
 /* Button */
 .input-container button {
   background: rgba(255, 255, 255, 0.2);  

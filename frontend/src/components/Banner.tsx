@@ -12,12 +12,14 @@ type Song = {
 const Banner = () => {
     const [antiSongs, setAntiSongs] = useState<Song[]>([]);
     const [searchSong, setSearchSong] = useState('');
+    const [searchedSong, setSearchedSong] = useState('');
 
     const getAntiSongs = (songName: string) => {
         if (!songName) return;
         axios.get(`http://localhost:8080/api/users?song_name=${songName}`)
         .then(response => {
             setAntiSongs(response.data.songs)
+            setSearchedSong(songName); // Update the searched song name
         })
         .catch(err => {
             console.log(err)
@@ -42,8 +44,11 @@ const Banner = () => {
                             <button onClick={() => getAntiSongs(searchSong)}>
                                 Search
                             </button>
-                            {antiSongs.length > 0 && <AntiSongColumn antiSongs={antiSongs} />}
                         </div>
+                        {searchedSong && (
+                            <h3 className="searched-song">Results for: {searchedSong}</h3>
+                        )}
+                        {antiSongs.length > 0 && <AntiSongColumn antiSongs={antiSongs} />}
                     </Col>
                 </Row>
             </Container>

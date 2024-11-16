@@ -10,7 +10,7 @@ const SongCard = ( {song_name, artist, album_cover}: SongCardProps) => {
         <div className="tileRow"> 
             <div className="tile">
                 <div className = "album_cover">
-                    <img src={`http://localhost:8080${album_cover}`}/>  {/* hard coded for now */}
+                    <img src={album_cover}/>
                 </div>
                 <div className="song_info">
                     <p>

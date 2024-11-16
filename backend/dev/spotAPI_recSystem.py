@@ -1,4 +1,4 @@
-from spotAPI_base import *
+from dev.spotAPI_base import *
 
 file_path = "./playlist_data.csv"
 df = pd.read_csv(file_path, encoding='utf-8')
@@ -20,7 +20,7 @@ print(f"Removed {rows_removed} rows containing missing values.\n")
 
 df = df_cleaned
 
-def get_recs():
+def get_recs(song_name):
     df['sin_key'] = np.sin(2 * np.pi * df['key'] / 11)
     df['sin_key'] = df['sin_key'].replace({np.inf: np.nan, -np.inf: np.nan})
     df['sin_key'] = df['sin_key'].fillna(0)
@@ -29,7 +29,8 @@ def get_recs():
     scaled_features = scaler.fit_transform(df[features_to_fit])
     
     # random song
-    selected_song = df.sample(n=1).reset_index(drop=True)
+    # selected_song = df.sample(n=1).reset_index(drop=True)
+    selected_song = df[df['Track Name'].str.contains(song_name, case=False, na=False)]
     selected_index = selected_song.index[0]
     print("Selected Song:")
     print(selected_song[['Track Name', 'Artist']])
@@ -80,7 +81,8 @@ def get_recs():
         rec_df = pd.DataFrame({
             'Track Name': [track['name'] for track in recs],
             'Artist': [', '.join([artist['name'] for artist in track['artists']]) for track in recs],
-            'URI': [track['uri'] for track in recs]
+            'URI': [track['uri'] for track in recs],
+            'Thumbnail URL': [track['album']['images'][0]['url'] for track in recs]
         })
         
         # Fetch audio features for recommendations
@@ -111,6 +113,10 @@ def get_recs():
         
         return rec_df
     
+    final = pd.DataFrame()
+    print()
+    print("user input: ", song_name)
+
     similar_rec_df = process_recommendations(similar_recommendations, scaler, selected_features_scaled)
     dissimilar_rec_df = process_recommendations(dissimilar_recommendations, scaler, selected_features_scaled)
     
@@ -129,5 +135,8 @@ def get_recs():
     else:
         top_dissimilar_final = pd.DataFrame()
         print("\nNo dissimilar recommendations available.")
+    
+    final = pd.concat([top_similar_final, top_dissimilar_final], ignore_index=True)
+    return final
 
-get_recs()
+# get_recs(song_name)
