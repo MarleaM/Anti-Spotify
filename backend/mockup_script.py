@@ -41,7 +41,7 @@ def get_songs():
                 {
                     "song_name": row["Track Name"],
                     "artist": row["Artist"],
-                    "album_cover": "https://i.scdn.co/image/ab67616d0000b27391b4bc7c88d91a42e0f3a8b7"
+                    "album_cover": row["Thumbnail URL"]
                 }
                 for _, row in result.iterrows()
             ]
@@ -49,4 +49,5 @@ def get_songs():
     )
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5888)
+    app.run(debug=True, host="0.0.0.0", port=8080)
+
