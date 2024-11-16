@@ -233,14 +233,13 @@
 }
 
 .main-album-cover{
-  margin-left: 0%;
-  margin-right: 10%;
+  content: center;
   flex: 1;
 }
 
 .main-song-card img {
-  width: 100%;  
-  height: auto; 
+  width: auto;  
+  height: 100%; 
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); 
 }

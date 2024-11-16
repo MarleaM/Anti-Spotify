@@ -8,9 +8,11 @@ type SongCardProps = {
 const MainSongCard = ( {song_name, artist, album_cover}: SongCardProps) => {    
     return (
         <div className="main-song-card">
-            <div className = "main-album-cover">
-                <img src={album_cover}/>
-            </div>
+                <div className = "main-album-cover">
+                    <a href ="https://github.com/MarleaM/OSS_Project" target ="_blank">
+                        <img src={album_cover}/>
+                    </a>
+                </div>
             <div className="main-song-info">
                 <h2>
                     {song_name}
