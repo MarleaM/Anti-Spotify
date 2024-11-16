@@ -1,5 +1,0 @@
-Notes:
-
-so made some changes... 
-1) updated setup.md with necessary modules (e.g. sklearn, numpy) you have to install in virtual env to run backend
-2) updated path names in the import statements in tony's backend files
