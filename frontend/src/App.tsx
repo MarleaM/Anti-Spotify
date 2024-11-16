@@ -11,9 +11,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navbar />
-      <Banner />
-      <Footer />
+      <div className = "navbar-fade-down">
+        <Navbar />
+        <Banner />
+      </div>
+      <div className = "footer-fade-up">
+        <Footer />
+      </div>
     </div>
   )
 }

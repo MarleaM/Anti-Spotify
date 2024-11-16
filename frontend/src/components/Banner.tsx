@@ -13,16 +13,22 @@ const Banner = () => {
     const [antiSongs, setAntiSongs] = useState<Song[]>([]);
     const [searchSong, setSearchSong] = useState('');
     const [searchedSong, setSearchedSong] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const getAntiSongs = (songName: string) => {
         if (!songName) return;
+        setLoading(true);
         axios.get(`http://localhost:8080/api/users?song_name=${songName}`)
         .then(response => {
             setAntiSongs(response.data.songs)
             setSearchedSong(songName); // Update the searched song name
+            setSearchSong('');
         })
         .catch(err => {
             console.log(err)
+        })
+        .finally(() => {
+            setLoading(false);
         });
     };
     
@@ -42,13 +48,17 @@ const Banner = () => {
                                 onChange={(e) => setSearchSong(e.target.value)}
                             />
                             <button onClick={() => getAntiSongs(searchSong)}>
-                                Search
+                                {loading ? `Searching...` : `Search`}
                             </button>
                         </div>
-                        {searchedSong && (
-                            <h3 className="searched-song">Results for: {searchedSong}</h3>
-                        )}
-                        {antiSongs.length > 0 && <AntiSongColumn antiSongs={antiSongs} />}
+                        {/*{searchedSong && (
+                            <h3 className="searched-song">
+                                {`Results for: ${searchedSong}`}
+                            </h3>
+                        )}*/}
+                        {antiSongs.length > 0 && !loading && 
+                            <AntiSongColumn antiSongs={antiSongs} />
+                        }
                     </Col>
                 </Row>
             </Container>
