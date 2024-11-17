@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 
 type SongCardProps = {
   song_name: string;
@@ -42,7 +44,7 @@ const SongCard = ({ song_name, artist, album_cover, preview_url }: SongCardProps
             </div>
         <div className="preview-btn-container">
             <button className="preview-btn" onClick={handlePlayPause}>
-                {isPlaying ? 'Pause' : 'Preview'}
+                <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
             </button>
         </div>
         <audio ref={audioRef} controls={false}>
