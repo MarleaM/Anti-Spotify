@@ -210,8 +210,14 @@
   width: 100%;  
   height: 100%; 
   object-fit: cover; 
+  scale:.95;
   border-radius: 12px;  
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); 
+  transition: transform 0.3s ease;
+}
+
+.song-card img:hover {
+  transform: scale(1.1); 
 }
 
 .song_info{
@@ -266,8 +272,14 @@
 .main-song-card img {
   width: auto;  
   height: 100%; 
+  scale:.95;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); 
+  transition: transform 0.3s ease;
+}
+
+.main-song-card img:hover {
+  transform: scale(1.1); 
 }
 
 .main-song-info{

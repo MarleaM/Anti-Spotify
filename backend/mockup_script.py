@@ -42,7 +42,8 @@ def get_songs():
                     "song_name": row["Track Name"],
                     "artist": row["Artist"],
                     "album_cover": row["Thumbnail URL"],
-                    "preview_url": row["Preview URL"]
+                    "preview_url": row["Preview URL"],
+                    "link_url": row["Link URL"]
                 }
                 for _, row in result.iterrows()
             ]

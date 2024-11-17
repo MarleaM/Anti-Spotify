@@ -7,9 +7,10 @@ type SongCardProps = {
   artist: string;
   album_cover: string;
   preview_url: string;
+  link_url: string;
 };
 
-const SongCard = ({ song_name, artist, album_cover, preview_url }: SongCardProps) => {
+const SongCard = ({ song_name, artist, album_cover, preview_url, link_url}: SongCardProps) => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -31,7 +32,9 @@ const SongCard = ({ song_name, artist, album_cover, preview_url }: SongCardProps
         <div className="tileRow">
             <div className="tile">
                 <div className="album_cover">
-                    <img src={album_cover} alt={`${song_name} album cover`} />
+                    <a href ={link_url} target ="_blank">
+                        <img src={album_cover} alt={`${song_name} album cover`} />
+                    </a>
                 </div>
                 <div className="song_info">
                     <p>

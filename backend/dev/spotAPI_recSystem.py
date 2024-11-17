@@ -83,7 +83,8 @@ def get_recs(song_name):
             'Artist': [', '.join([artist['name'] for artist in track['artists']]) for track in recs],
             'URI': [track['uri'] for track in recs],
             'Thumbnail URL': [track['album']['images'][0]['url'] for track in recs],
-            'Preview URL': [track.get('preview_url', None) for track in recs]
+            'Preview URL': [track.get('preview_url', None) for track in recs],
+            'Link URL': [track['external_urls']['spotify'] for track in recs]
             
         })
         

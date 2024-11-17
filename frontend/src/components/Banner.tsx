@@ -7,6 +7,8 @@ type Song = {
     song_name: string;
     artist: string;
     album_cover: string;
+    preview_url: string;
+    link_url: string;
 }
 
 const Banner = () => {
