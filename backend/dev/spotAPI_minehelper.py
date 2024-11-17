@@ -1,13 +1,9 @@
-from dev.spotAPI_base import sp
-
-def get_thumbnail_url(track_name, artist_name):
-    query = f"{track_name} {artist_name}"
-    results = sp.search(q=query, type='track', limit=1)
-    if results['tracks']['items']:
-        track = results['tracks']['items'][0]
-        if track['album']['images']:
-            return track['album']['images'][0]['url'], track['album']['name']
-    return "", ""
+from dev.spotAPI_base import *
+import time
+from tqdm import tqdm
+import concurrent.futures
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import math
 
 def get_playlist_id(playlist_url):
     if 'playlist/' in playlist_url:
@@ -15,15 +11,70 @@ def get_playlist_id(playlist_url):
     else:
         raise ValueError("Invalid Spotify playlist URL.")
 
-def process_playlist(playlist_url, batch_size=50):
+def fetch_tracks_batch(playlist_id, offset, limit):
     """
-    Processes the Spotify playlist and returns a list of track data.
-    Handles large playlists by fetching tracks in batches using offsets.
-    
+    Fetches a batch of tracks from the Spotify playlist.
+
+    Parameters:
+    - playlist_id (str): Spotify playlist ID.
+    - offset (int): The index of the first track to return.
+    - limit (int): The number of tracks to return (max 50).
+
+    Returns:
+    - dict: The response from the Spotify API containing track data.
+    """
+    while True:
+        try:
+            response = sp.playlist_tracks(playlist_id, offset=offset, limit=limit)
+            return response
+        except spotipy.exceptions.SpotifyException as e:
+            if e.http_status == 429:
+                retry_after = int(e.headers.get('Retry-After', 5))
+                print(f"Rate limit exceeded. Retrying after {retry_after} seconds.")
+                time.sleep(retry_after)
+            else:
+                print(f"Spotify API error: {e}")
+                return None
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return None
+
+def fetch_audio_features_batch(track_ids):
+    """
+    Fetches audio features for a batch of track IDs.
+
+    Parameters:
+    - track_ids (list): List of Spotify track IDs.
+
+    Returns:
+    - list: List of audio feature dictionaries.
+    """
+    while True:
+        try:
+            audio_features = sp.audio_features(tracks=track_ids)
+            return audio_features
+        except spotipy.exceptions.SpotifyException as e:
+            if e.http_status == 429:
+                retry_after = int(e.headers.get('Retry-After', 5))
+                print(f"Rate limit exceeded. Retrying after {retry_after} seconds.")
+                time.sleep(retry_after)
+            else:
+                print(f"Spotify API error: {e}")
+                return [None] * len(track_ids)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return [None] * len(track_ids)
+
+def mine_playlist(playlist_url, batch_size=50, max_workers=1):
+    """
+    Processes the Spotify playlist concurrently and returns a list of track data.
+    Handles large playlists by fetching tracks and audio features in parallel using multiple workers.
+
     Parameters:
     - playlist_url (str): The Spotify playlist URL.
-    - batch_size (int): Number of tracks to fetch per request (max 50).
-    
+    - batch_size (int): Number of tracks to fetch per request (max 100).
+    - max_workers (int): Number of concurrent workers.
+
     Returns:
     - List[dict]: A list of dictionaries containing track data and audio features.
     """
@@ -32,102 +83,98 @@ def process_playlist(playlist_url, batch_size=50):
     except ValueError as ve:
         print(ve)
         return []
-    
-    # Initialize variables
-    offset = 0
-    total_tracks = None
+
+    # First, fetch the initial batch to get total_tracks
+    initial_response = fetch_tracks_batch(playlist_id, offset=0, limit=batch_size)
+    if initial_response is None:
+        return []
+
+    total_tracks = initial_response.get('total', 0)
+    if total_tracks == 0:
+        print("Playlist is empty.")
+        return []
+
+    num_batches = math.ceil(total_tracks / batch_size)
+    offsets = [i * batch_size for i in range(num_batches)]
     data = []
     all_track_ids = []
-    
-    print("Fetching playlist tracks...")
-    
-    while True:
-        try:
-            # Fetch a batch of tracks
-            response = sp.playlist_tracks(playlist_id, offset=offset, limit=batch_size)
-        except spotipy.exceptions.SpotifyException as e:
-            if e.http_status == 429:
-                # Rate limit exceeded
-                retry_after = int(e.headers.get('Retry-After', 5))
-                print(f"Rate limit exceeded. Retrying after {retry_after} seconds.")
-                time.sleep(retry_after)
-                continue
-            else:
-                print(f"Spotify API error: {e}")
-                break
-        except Exception as e:
-            print(f"Unexpected error: {e}")
-            break
-        
-        if total_tracks is None:
-            total_tracks = response['total']
-            print(f"Total tracks in playlist: {total_tracks}")
-        
-        tracks = response['items']
-        if not tracks:
-            break  # No more tracks to fetch
-        
-        for item in tracks:
-            track = item['track']
-            if track is None:
-                continue  # Skip if track information is not available
-            
-            track_name = track['name']
-            artist_names = ', '.join([artist['name'] for artist in track['artists']])
-            if len(track['artists']) >=3:
-                artist_names = ', '.join([artist['name'] for artist in track['artists']][:3])
-            album_name = track['album']['name']
-            track_id = track['id']
-            
-            # Get thumbnail URL
-            thumbnail_url, _ = get_thumbnail_url(track_name, artist_names)
-            
-            # Append track ID for fetching audio features
-            if track_id:
-                all_track_ids.append(track_id)
-            
-            # Prepare track data
-            track_data = {
-                'Track Name': track_name,
-                'Artist': artist_names,
-                'Album': album_name,
-                'Thumbnail URL': thumbnail_url,
-                'Track ID': track_id
-            }
-            data.append(track_data)
-        
-        offset += batch_size
-        print(f"Fetched {min(offset, total_tracks)} / {total_tracks} tracks.")
-        
-        if offset >= total_tracks:
-            break  # All tracks fetched
-    
-    print("Fetching audio features...")
-    
-    # Fetch audio features in batches
-    for i in range(0, len(all_track_ids), 50):
-        batch_ids = all_track_ids[i:i+50]
-        try:
-            audio_features = sp.audio_features(tracks=batch_ids)
-        except spotipy.exceptions.SpotifyException as e:
-            if e.http_status == 429:
-                retry_after = int(e.headers.get('Retry-After', 5))
-                print(f"Rate limit exceeded while fetching audio features. Retrying after {retry_after} seconds.")
-                time.sleep(retry_after)
-                audio_features = sp.audio_features(tracks=batch_ids)
-            else:
-                print(f"Spotify API error while fetching audio features: {e}")
-                audio_features = [None] * len(batch_ids)
-        
-        for j, features in enumerate(audio_features):
-            index = i + j
-            if features:
-                for key, value in features.items():
-                    data[index][key] = value
-            else:
-                print(f"No audio features found for Track ID: {batch_ids[j]}")
-        
-        print(f"Processed audio features for {min(i+50, len(all_track_ids))} / {len(all_track_ids)} tracks.")
-    
-    print("Finished processing playlist.")
-    return data
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        track_futures = {
+            executor.submit(fetch_tracks_batch, playlist_id, offset, batch_size): offset
+            for offset in offsets
+        }
+
+        with tqdm(total=num_batches, desc="Fetching tracks", unit="batch") as track_pbar:
+            for future in as_completed(track_futures):
+                response = future.result()
+                if response is None:
+                    track_pbar.update(1)
+                    continue  # skip missing data
+
+                tracks = response.get('items', [])
+                for item in tracks:
+                    track = item.get('track')
+
+                    if track is None:
+                        continue
+                    album = track.get('album', {})
+                    track_name = track.get('name', '')
+                    artist_names = ', '.join([artist.get('name', '') for artist in track.get('artists', [])][:3])
+                    album_name = album.get('name', '')
+                    track_id = track.get('id')
+                    thumbnail_url = album.get('images', [])[0]['url'] if album.get('images', []) else ""
+
+                    if track_id:
+                        all_track_ids.append(track_id)
+
+                    track_data = {
+                        'Track Name': track_name,
+                        'Artist': artist_names,
+                        'Album': album_name,
+                        'Thumbnail URL': thumbnail_url,
+                        'id': track_id
+                    }
+                    data.append(track_data)
+
+                track_pbar.update(1)
+
+    if not all_track_ids:
+        print("No valid track IDs found.")
+        return data
+
+    valid_indices = set()
+    audio_num_batches = math.ceil(len(all_track_ids) / batch_size)
+    audio_offsets = [i * batch_size for i in range(audio_num_batches)]
+    audio_batches = [all_track_ids[i:i + batch_size] for i in audio_offsets]
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        audio_futures = {
+            executor.submit(fetch_audio_features_batch, batch_ids): idx
+            for idx, batch_ids in enumerate(audio_batches)
+        }
+
+        with tqdm(total=audio_num_batches, desc="Fetching features", unit="batch") as feature_pbar:
+            for future in as_completed(audio_futures):
+                batch_idx = audio_futures[future]
+                audio_features = future.result()
+                if audio_features is None:
+                    audio_features = [None] * len(audio_batches[batch_idx])
+
+                for j, features in enumerate(audio_features):
+                    index = batch_idx * batch_size + j
+                    if index >= len(data):
+                        continue
+
+                    if features:
+                        for key, value in features.items():
+                            data[index][key] = value
+                        valid_indices.add(index)
+                    # else:
+                    #     print(f"\nNo audio features found for Track ID: {all_track_ids[index]}")
+
+                feature_pbar.update(1)
+
+    filtered_data = [data[i] for i in sorted(valid_indices)]
+
+    return filtered_data

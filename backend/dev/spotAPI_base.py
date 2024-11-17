@@ -1,17 +1,8 @@
 import os
 from dotenv import load_dotenv
 
-import time
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-
-
-import numpy as np 
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.preprocessing import StandardScaler
 
 load_dotenv()
 client_id = os.getenv('SPOTIFY_CLIENT_ID')
