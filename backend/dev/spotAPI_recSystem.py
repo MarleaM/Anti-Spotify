@@ -82,7 +82,9 @@ def get_recs(song_name):
             'Track Name': [track['name'] for track in recs],
             'Artist': [', '.join([artist['name'] for artist in track['artists']]) for track in recs],
             'URI': [track['uri'] for track in recs],
-            'Thumbnail URL': [track['album']['images'][0]['url'] for track in recs]
+            'Thumbnail URL': [track['album']['images'][0]['url'] for track in recs],
+            'Preview URL': [track.get('preview_url', None) for track in recs]
+            
         })
         
         # Fetch audio features for recommendations

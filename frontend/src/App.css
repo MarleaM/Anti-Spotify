@@ -179,7 +179,6 @@
 }
 
 /* Loading Songs */
-
 .song-row {
   display: flex;              
   justify-content: space-between; 
@@ -194,6 +193,7 @@
 
 /* Individual Song Cards */
 .song-card {
+  position: relative;
   margin: 10px;
   color: rgb(190, 219, 229);
   padding: 20px;
@@ -216,6 +216,32 @@
 
 .song_info{
   padding-top: 10px;
+}
+
+.preview-btn-container {
+  position: absolute;   
+  bottom: -60px;        
+  left: 50%;           
+  transform: translateX(-50%); 
+  display: flex;
+  justify-content: center;
+  width: 100%;        
+  padding-top: 10px;   
+}
+
+.preview-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 0.75rem;
+  user-select: none;
+}
+
+.recommendations-heading {
+  margin-top: 50px;
 }
 
 .main-song-card {
