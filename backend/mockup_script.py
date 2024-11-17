@@ -5,7 +5,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import dev.spotAPI_base
 import dev.spotAPI_minehelper
-import dev.spotAPI_minedata
+import minedata
 import dev.spotAPI_recSystem
 from dev.spotAPI_recSystem import get_recs
 

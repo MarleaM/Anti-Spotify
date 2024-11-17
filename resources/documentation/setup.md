@@ -41,6 +41,7 @@ pip install python-dotenv
 pip install pandas
 pip install seaborn
 pip install scikit-learn
+pip install tqdm                         
 ```
 Then, run the script:
 ```python
