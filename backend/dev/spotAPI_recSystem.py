@@ -1,12 +1,19 @@
 from dev.spotAPI_base import *
 
+import numpy as np 
+import pandas as pd
+# import seaborn as sns
+# import matplotlib.pyplot as plt
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.preprocessing import StandardScaler
+
+
 file_path = "./playlist_data.csv"
 df = pd.read_csv(file_path, encoding='utf-8')
 
 features = df.columns.tolist()
 
 features_to_fit = [ft for ft in audio_headers if ft != "key"] + ["sin_key"]
-
 
 # print("Missing Values Before Sanitization:")
 # print(df.isnull().sum())
