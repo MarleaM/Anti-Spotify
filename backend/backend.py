@@ -3,9 +3,8 @@ from flask_cors import CORS
 import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-import dev.spotAPI_base
+# import dev.spotAPI_base
 import dev.spotAPI_minehelper
-import minedata
 import dev.spotAPI_recSystem
 from dev.spotAPI_recSystem import get_recs
 
