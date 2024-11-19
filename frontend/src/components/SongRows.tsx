@@ -7,7 +7,7 @@ const SongRows = ({ antiSongs }: { antiSongs: { song_name: string; artist: strin
         <div className="title">
             <div className = "main-song-fade-in">
                 <div className="main-song-div">
-                        <MainSongCard song_name={antiSongs[0].song_name} artist={antiSongs[0].artist} album_cover={antiSongs[0].album_cover} link_url={antiSongs[0].link_url}/>
+                        <MainSongCard song_name={antiSongs[0].song_name} artist={antiSongs[0].artist} album_cover={antiSongs[0].album_cover} preview_url={antiSongs[0].preview_url} link_url={antiSongs[0].link_url}/>
                 </div>
             </div>
 
