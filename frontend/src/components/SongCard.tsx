@@ -45,14 +45,16 @@ const SongCard = ({ song_name, artist, album_cover, preview_url, link_url}: Song
                     </p>
                 </div>
             </div>
+        {preview_url && (
         <div className="preview-btn-container">
             <button className="preview-btn" onClick={handlePlayPause}>
                 <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
             </button>
-        </div>
         <audio ref={audioRef} controls={false}>
            <source src={preview_url} type="audio/mpeg" />
         </audio>
+        </div>
+        )}
     </div>
     );
 };
