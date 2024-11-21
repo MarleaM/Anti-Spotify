@@ -16,7 +16,7 @@
 
 ## 🚀 Getting Started
 
-Follow instructions in our **setup.md** file to set up and run Anti-Spotify on your local machine for development and testing purposes.
+Follow the instructions in our [setup](https://github.com/MarleaM/Anti-Spotify/blob/484ba0c29a766bf823fbb6bdaec3b3e47feaaa38/resources/documentation/setup.md) file to set up and run Anti-Spotify on your local machine for development and testing purposes.
 
 ## 🎬 Usage
 1. Open the web app in your browser by visiting http://localhost:5173 (or port 5174, 5175)
@@ -24,14 +24,7 @@ Follow instructions in our **setup.md** file to set up and run Anti-Spotify on y
 3. Wait and view yuor results
 
 ## 🤝 Contributing
-We'd love your contributions! Follow these steps to get started:
-
-1. Follow instructions in our **setup.md** file to set up and run Anti-Spotify on your local machine 
-2. Fork the repository
-3. Create a new branch (git checkout -b feature-name)
-4. Make your changes and commit them (git commit -m 'Add feature')
-5. Push to the branch (git push origin feature-name)
-6. Open a Pull Request
+We'd love your contributions! Please check out our [Contributing Guidelines](https://github.com/MarleaM/Anti-Spotify/blob/484ba0c29a766bf823fbb6bdaec3b3e47feaaa38/resources/documentation/contributing.md) for tips on getting started.
 
 ## 📜 License
 This project is open-source and available under the MIT License.
