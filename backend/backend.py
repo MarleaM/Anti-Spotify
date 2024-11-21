@@ -1,15 +1,17 @@
 from flask import Flask, jsonify, request 
 from flask_cors import CORS
+from flask_caching import Cache
 import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 # import dev.spotAPI_base
-import dev.spotAPI_minehelper
-import dev.spotAPI_recSystem
+# import dev.spotAPI_minehelper
+# import dev.spotAPI_recSystem
 from dev.spotAPI_recSystem import get_recs
 
 app = Flask(__name__, static_folder='static')
 cors = CORS(app, origins='*')
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 # Spotify API setup (assuming credentials are in environment variables)
 client_id = os.getenv('SPOTIFY_CLIENT_ID')
@@ -26,7 +28,6 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 #you can see the returned JSON on http://localhost:8080/api/users
 
 @app.route("/api/users", methods = {'GET'})
-
 def get_songs():
     song_name = request.args.get('song_name')
 
@@ -51,6 +52,7 @@ def get_songs():
     )
 
 @app.route("/api/suggestions", methods=['GET'])
+@cache.cached(timeout=300, query_string=True)
 def get_suggestions():
     """Endpoint to return search suggestions for a song"""
     query = request.args.get('query')

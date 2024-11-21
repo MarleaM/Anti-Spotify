@@ -1,7 +1,8 @@
-import {useState, useRef} from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import {Container, Row, Col} from "react-bootstrap";
 import axios from 'axios';
 import AntiSongColumn from "./SongRows.tsx";
+import debounce from 'lodash.debounce';
 
 type Song = {
     song_name: string;
@@ -51,6 +52,20 @@ const Banner = () => {
             });
     };
 
+        
+    const debouncedGetSuggestions = useCallback(
+        debounce((value: string) => {
+            getSuggestions(value);
+        }, 300), // 300ms delay
+        []
+    );
+
+    useEffect(() => {
+        return () => {
+            debouncedGetSuggestions.cancel();
+        };
+    }, [debouncedGetSuggestions]);
+
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         // Check if the blur event is happening due to a click inside the suggestions
         if (searchBoxRef.current && searchBoxRef.current.contains(e.relatedTarget)) {
@@ -73,8 +88,9 @@ const Banner = () => {
                                 placeholder="Enter a song" 
                                 value={searchSong}
                                 onChange={(e) => {
-                                    setSearchSong(e.target.value);
-                                    getSuggestions(e.target.value);
+                                    const value = e.target.value;
+                                    setSearchSong(value);
+                                    debouncedGetSuggestions(value);
                                 }}
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter') {
