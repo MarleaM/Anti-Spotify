@@ -44,25 +44,6 @@
   background-repeat: no-repeat;
 }
 
-/* Input area */
-.input-container {
-  position: relative; 
-  display: inline-block; 
-  width: fit-content; 
-}
-
-.input-container input{
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  width: 500px;
-  padding: .75rem;  
-  margin-right: 10px;  
-  caret-color: rgba(255, 255, 255, 0.6);  
-  color: #ffffff;
-  position: relative;
-}
-
 .tagline, .searched-song {
   color: white;
   font-size: 1.5rem;
@@ -70,15 +51,37 @@
   margin-top: 10px; 
 }
 
+/* Input area */
+
+.input-container {
+  position: relative; 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  width: 500px; 
+  margin: 0 auto; 
+}
+
+.input-container input{
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  width: 100%;
+  padding: .75rem;  
+  margin-right: 10px;  
+  caret-color: rgba(255, 255, 255, 0.6);  
+  color: #ffffff;
+  position: relative;
+}
+
 .search_suggestion {
-  position: relative;  
+  position: absolute;  
+  top: 100%;
   background: rgba(255, 255, 255, 0.4);
   border-radius: 10px;
-  width: 500px;
-  left: 0;
+  width: 79%;
   max-height: 250px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7); 
-
   font-weight: normal;
   font-size: 20px;
   color: #ffffff; 
@@ -90,7 +93,7 @@
   text-align: left;
   padding: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
-  width: 500px;
+  width: 100%;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }

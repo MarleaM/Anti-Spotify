@@ -93,7 +93,7 @@ const Banner = () => {
                                 {loading ? `Searching...` : `Search`}
                             </button>
                             {suggestions.length > 0 && (
-                                <div
+                            <div
                                 className="search_suggestion"
                                 ref={searchBoxRef} 
                               >
@@ -114,13 +114,13 @@ const Banner = () => {
                                             <span className="artist-name">{data.artist}</span>
                                           </div>
                                     ))}
-                                </div>
+                            </div>
                             )}
                         </div>
                         <div
                             className="song-card-container"
                             style={{
-                                marginTop: suggestions.length > 0 ? "10px" : "50px", 
+                                marginTop: suggestions.length > 0 ? "200px" : "50px", 
                                 transition: "margin-top 0.3s ease-in-out",
                             }}
                         >
