@@ -33,10 +33,10 @@ If you believe someone is violating the code of conduct, we ask that you report 
 - Advocating for, or encouraging, any of the above behavior.
 - Repeated harassment of others. In general, if someone asks you to stop, then stop.
 
-When we disagree, try to understand why. Disagreements, both social and technical, happen all the time and Ruby is no exception. It is important that we resolve disagreements and differing views constructively. Remember that we're different. The strength of Anti-Spotify will come from its varied community and people from a wide range of backgrounds. Different people have different perspectives on issues. Being unable to understand why someone holds a viewpoint doesn't mean that they're wrong. Don't forget that it is human to err and blaming each other doesn't get us anywhere. Offer to help resolve issues and learn from mistakes.
+When we disagree, try to understand why. Disagreements, both social and technical, happen all the time and our project is no exception. It is important that we resolve disagreements and differing views constructively. Remember that we're different. The strength of Anti-Spotify will come from its varied community and people from a wide range of backgrounds. Different people have different perspectives on issues. Being unable to understand why someone holds a viewpoint doesn't mean that they're wrong. Don't forget that it is human to err and blaming each other doesn't get us anywhere. Offer to help resolve issues and learn from mistakes.
 
 If a participant engages in harassing behavior, the organizers may take any action they deem appropriate, including warning the offender or expulsion from the project.
 
-We're all just people that love music. 
+We're all just people that love music (and programming). If making comments about someone else's code, please keep these guidelines in mind. Criticism should never be directed at an individual's character or personhood. 
 
 _We have based our Code of Conduct on the one made by the Django Project._
