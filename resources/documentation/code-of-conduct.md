@@ -9,20 +9,20 @@ This is not an exhaustive list of things that you cannot do. Rather, take it in 
 This code of conduct applies to all spaces managed by the Anti-Spotify Project. At the moment, this includes the issue tracker on GitHub and any other areas created by the project team which the community uses for communication. In addition, violations of this code outside these spaces may affect a person's ability to participate within them.
 
 If you believe someone is violating the code of conduct, we ask that you report it by emailing one of our maintainers:
-[Lisa Messier](mailto:lmessie1@swarthmore.edu)
-[Marlea Martens](mailto:mmarten1@swarthmore.edu)
-[Emily Dai](mailto:edai1@swarthmore.edu)
-[Tony Cao](mailto:kcao1@swarthmore.edu)
+- [Lisa Messier](mailto:lmessie1@swarthmore.edu)
+- [Marlea Martens](mailto:mmarten1@swarthmore.edu)
+- [Emily Dai](mailto:edai1@swarthmore.edu)
+- [Tony Cao](mailto:kcao1@swarthmore.edu)
 
-Be friendly and patient.
+**Be friendly and patient.**
 
-Be welcoming. We strive to be a community that welcomes and supports people of all backgrounds and identities. This includes, but is not limited to members of any race, ethnicity, culture, national origin, colour, immigration status, social and economic class, educational level, sex, sexual orientation, gender identity and expression, age, size, family status, political belief, religion, and mental and physical ability.
+**Be welcoming.** We strive to be a community that welcomes and supports people of all backgrounds and identities. This includes, but is not limited to members of any race, ethnicity, culture, national origin, colour, immigration status, social and economic class, educational level, sex, sexual orientation, gender identity and expression, age, size, family status, political belief, religion, and mental and physical ability.
 
-Be considerate. Your work will be used by other people, and you in turn will depend on the work of others. Any decision you take will affect users and colleagues, and you should take those consequences into account when making decisions.
+**Be considerate.** Your work will be used by other people, and you in turn will depend on the work of others. Any decision you take will affect users and colleagues, and you should take those consequences into account when making decisions.
 
-Be respectful. Not all of us will agree all the time, but disagreement is no excuse for poor behavior and poor manners. We might all experience some frustration now and then, but we cannot allow that frustration to turn into a personal attack. It is important to remember that a community where people feel uncomfortable or threatened is not a productive one. Members of the Anti-Spotify community should be respectful when dealing with other members as well as with people outside the Anti-Spotify community.
+**Be respectful.** Not all of us will agree all the time, but disagreement is no excuse for poor behavior and poor manners. We might all experience some frustration now and then, but we cannot allow that frustration to turn into a personal attack. It is important to remember that a community where people feel uncomfortable or threatened is not a productive one. Members of the Anti-Spotify community should be respectful when dealing with other members as well as with people outside the Anti-Spotify community.
 
-Be careful in the words that you choose. Be kind to others. Do not insult or put down other participants. Harassment and other exclusionary behavior aren't acceptable. This includes, but is not limited to:
+**Be careful in the words that you choose.** Be kind to others. Do not insult or put down other participants. Harassment and other exclusionary behavior aren't acceptable. This includes, but is not limited to:
 
 - Violent threats or language directed against another person.
 - Sexist, racist, or otherwise discriminatory jokes and language.
