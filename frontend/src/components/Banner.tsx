@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useRef} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
 import axios from 'axios';
 import AntiSongColumn from "./SongRows.tsx";
@@ -16,6 +16,8 @@ const Banner = () => {
     const [searchSong, setSearchSong] = useState('');
     const [searchedSong, setSearchedSong] = useState('');
     const [loading, setLoading] = useState(false);
+    const [suggestions, setSuggestions] = useState<Song[]>([]);
+    const searchBoxRef = useRef<HTMLDivElement | null>(null);
 
     const getAntiSongs = (songName: string) => {
         if (!songName) return;
@@ -33,6 +35,29 @@ const Banner = () => {
             setLoading(false);
         });
     };
+
+    const getSuggestions = (searchInput: string) => {
+        if (!searchInput.trim()) {
+            setSuggestions([]);
+            return;
+        }
+        axios
+            .get(`http://localhost:8080/api/suggestions?query=${searchInput}`)
+            .then((response) => {
+                setSuggestions(response.data.suggestions);
+            })
+            .catch((err) => {
+                console.error("Error fetching suggestions:", err);
+            });
+    };
+
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+        // Check if the blur event is happening due to a click inside the suggestions
+        if (searchBoxRef.current && searchBoxRef.current.contains(e.relatedTarget)) {
+            return;
+        }
+        setSuggestions([]); // Hide suggestions if clicked outside
+    };
     
     return (
         <section className="banner" id="home">
@@ -47,20 +72,62 @@ const Banner = () => {
                                 type="text" 
                                 placeholder="Enter a song" 
                                 value={searchSong}
-                                onChange={(e) => setSearchSong(e.target.value)}
+                                onChange={(e) => {
+                                    setSearchSong(e.target.value);
+                                    getSuggestions(e.target.value);
+                                }}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        getAntiSongs(searchSong); 
+                                        setSuggestions([]); 
+                                    }
+                                }}
+                                onBlur={handleBlur}
+                                onFocus={() => getSuggestions(searchSong)}
                             />
-                            <button onClick={() => getAntiSongs(searchSong)}>
+                            <button onClick={() => {
+                                getAntiSongs(searchSong); 
+                                setSuggestions([]); 
+                            }}
+                            >
                                 {loading ? `Searching...` : `Search`}
                             </button>
+                            {suggestions.length > 0 && (
+                                <div
+                                className="search_suggestion"
+                                ref={searchBoxRef} 
+                              >
+                                    {suggestions.map((data, index) => (
+                                        <div
+                                            key={index}
+                                            className="suggestion-row"
+                                            onMouseDown={(e) => {
+                                                e.preventDefault(); 
+                                            }}
+                                            onClick={() => {
+                                                setSearchSong(data.song_name); 
+                                                getAntiSongs(data.song_name); 
+                                                setSuggestions([]); 
+                                            }}
+                                            >
+                                            <span className="song-name">{data.song_name}</span>
+                                            <span className="artist-name">{data.artist}</span>
+                                          </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
-                        {/*{searchedSong && (
-                            <h3 className="searched-song">
-                                {`Results for: ${searchedSong}`}
-                            </h3>
-                        )}*/}
-                        {antiSongs.length > 0 && !loading && 
-                            <AntiSongColumn antiSongs={antiSongs} />
-                        }
+                        <div
+                            className="song-card-container"
+                            style={{
+                                marginTop: suggestions.length > 0 ? "10px" : "50px", 
+                                transition: "margin-top 0.3s ease-in-out",
+                            }}
+                        >
+                            {antiSongs.length > 0 && !loading && (
+                                <AntiSongColumn antiSongs={antiSongs} />
+                            )}
+                        </div>
                     </Col>
                 </Row>
             </Container>

@@ -63,6 +63,50 @@
   margin-top: 10px; 
 }
 
+.search_suggestion {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  width: 500px;
+  margin-left: 259px;
+  max-height: 250px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7); 
+
+  font-weight: normal;
+  font-size: 20px;
+  color: #ffffff; 
+  overflow-y: scroll; 
+  overflow-x: hidden; 
+}
+
+.suggestion-row {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+  width: 500px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.suggestion-row:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+.suggestion-row .song-name {
+  font-weight: bold;
+  color: #ffffff; 
+}
+
+.suggestion-row .artist-name {
+  margin-left: 10px;
+  font-size:16px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.song-card-container {
+  transition: margin-top 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 /* Button */
 .input-container button {
   background: rgba(255, 255, 255, 0.2);  

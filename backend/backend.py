@@ -24,6 +24,7 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 #activate with this command: virtual_environment/Scripts/activate
 #to run the script do: python mockup_script.py
 #you can see the returned JSON on http://localhost:8080/api/users
+
 @app.route("/api/users", methods = {'GET'})
 
 def get_songs():
@@ -48,6 +49,33 @@ def get_songs():
             ]
         }
     )
+
+@app.route("/api/suggestions", methods=['GET'])
+def get_suggestions():
+    """Endpoint to return search suggestions for a song"""
+    query = request.args.get('query')
+
+    if not query:
+        return jsonify({"error": "Please provide a search query"}), 400
+
+    try:
+        results = sp.search(q=query, type='track', limit=10) 
+        suggestions = [
+            {
+                "song_name": track["name"],
+                "artist": ", ".join([artist["name"] for artist in track["artists"]]),
+                "album_cover": track["album"]["images"][0]["url"] if track["album"]["images"] else None,
+                "preview_url": track["preview_url"],
+                "link_url": track["external_urls"]["spotify"]
+            }
+            for track in results["tracks"]["items"]
+        ]
+
+        return jsonify({"suggestions": suggestions})
+
+    except Exception as e:
+        print(f"Error fetching suggestions: {e}")
+        return jsonify({"error": "Failed to fetch suggestions"}), 500
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)
