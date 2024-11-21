@@ -72,7 +72,7 @@ source virtual_environment/bin/activate
 Now, you must install the following packages. This might take a few minutes:
 
 ```python
-pip install Flask Flask_CORS spotipy python-dotenv pandas seaborn scikit-learn tqdm              
+pip install Flask Flask_CORS spotipy python-dotenv pandas seaborn scikit-learn tqdm flask_caching              
 ```
 Then, run the script:
 ```python

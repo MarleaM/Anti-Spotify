@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 
 
-file_path = "./playlist_data.csv"
+file_path = "./playlist_data_HUGE.csv"
 df = pd.read_csv(file_path, encoding='utf-8')
 
 features = df.columns.tolist()
