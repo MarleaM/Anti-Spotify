@@ -72,6 +72,16 @@
   caret-color: rgba(255, 255, 255, 0.6);  
   color: #ffffff;
   position: relative;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    border-color: #ccc;
+  }
+  50% {
+    border-color: #007BFF; /* Active blue border */
+  }
 }
 
 .search_suggestion {
