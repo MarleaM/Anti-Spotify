@@ -12,7 +12,7 @@
 .banner .tagline {
   font-weight: 700;
   letter-spacing: 0.8px;
-  padding: 8px 10px;
+  padding: 2em 2.4em;
   font-size: 80px;
   margin-bottom: 40px;
   display: inline-block;
@@ -20,7 +20,9 @@
   background-image: url('./assets/circle.png');
   background-size: cover; 
   background-position: center;
-  padding: 50px 60px;
+  background-size: 100% 100%;
+  padding: 50px 60px; 
+  position: relative;
 
 }
 

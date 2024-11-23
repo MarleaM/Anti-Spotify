@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import {Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import axios from 'axios';
 import AntiSongColumn from "./SongRows.tsx";
 import debounce from 'lodash.debounce';
@@ -24,17 +24,17 @@ const Banner = () => {
         if (!songName) return;
         setLoading(true);
         axios.get(`http://localhost:8080/api/users?song_name=${songName}`)
-        .then(response => {
-            setAntiSongs(response.data.songs)
-            setSearchedSong(songName); // Update the searched song name
-            setSearchSong('');
-        })
-        .catch(err => {
-            console.log(err)
-        })
-        .finally(() => {
-            setLoading(false);
-        });
+            .then(response => {
+                setAntiSongs(response.data.songs)
+                setSearchedSong(songName); // Update the searched song name
+                setSearchSong('');
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     const getSuggestions = (searchInput: string) => {
@@ -52,7 +52,7 @@ const Banner = () => {
             });
     };
 
-        
+
     const debouncedGetSuggestions = useCallback(
         debounce((value: string) => {
             getSuggestions(value);
@@ -73,19 +73,19 @@ const Banner = () => {
         }
         setSuggestions([]); // Hide suggestions if clicked outside
     };
-    
+
     return (
         <section className="banner" id="home">
             <Container>
-                <Row className = "align-items-center">
+                <Row className="align-items-center">
                     <Col>
                         <span className="tagline">
                             Anti-Spotify
                         </span>
                         <div className="input-container">
-                            <input 
-                                type="text" 
-                                placeholder="Enter a song" 
+                            <input
+                                type="text"
+                                placeholder="Enter a song"
                                 value={searchSong}
                                 onChange={(e) => {
                                     const value = e.target.value;
@@ -94,55 +94,49 @@ const Banner = () => {
                                 }}
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter') {
-                                        getAntiSongs(searchSong); 
-                                        setSuggestions([]); 
+                                        getAntiSongs(searchSong);
+                                        setSuggestions([]);
                                     }
                                 }}
                                 onBlur={handleBlur}
                                 onFocus={() => getSuggestions(searchSong)}
                             />
                             <button onClick={() => {
-                                getAntiSongs(searchSong); 
-                                setSuggestions([]); 
+                                getAntiSongs(searchSong);
+                                setSuggestions([]);
                             }}
                             >
                                 {loading ? `Searching...` : `Search`}
                             </button>
                             {suggestions.length > 0 && (
-                            <div
-                                className="search_suggestion"
-                                ref={searchBoxRef} 
-                              >
+                                <div
+                                    className="search_suggestion"
+                                    ref={searchBoxRef}
+                                >
                                     {suggestions.map((data, index) => (
                                         <div
                                             key={index}
                                             className="suggestion-row"
                                             onMouseDown={(e) => {
-                                                e.preventDefault(); 
+                                                e.preventDefault();
                                             }}
                                             onClick={() => {
-                                                setSearchSong(data.song_name); 
-                                                getAntiSongs(data.song_name); 
-                                                setSuggestions([]); 
+                                                setSearchSong(data.song_name);
+                                                getAntiSongs(data.song_name);
+                                                setSuggestions([]);
                                             }}
-                                            >
+                                        >
                                             <span className="song-name">{data.song_name}</span>
                                             <span className="artist-name">{data.artist}</span>
-                                          </div>
+                                        </div>
                                     ))}
-                            </div>
+                                </div>
                             )}
                         </div>
-                        <div
-                            className="song-card-container"
-                            style={{
-                                marginTop: suggestions.length > 0 ? "200px" : "50px", 
-                                transition: "margin-top 0.3s ease-in-out",
-                            }}
-                        >
+                        <div className="song-card-container" >
                             {antiSongs.length > 0 && !loading && (
-                                <AntiSongColumn antiSongs={antiSongs} />
-                            )}
+                                <AntiSongColumn antiSongs={antiSongs} />)
+                            }
                         </div>
                     </Col>
                 </Row>
