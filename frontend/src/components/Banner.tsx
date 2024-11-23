@@ -133,10 +133,15 @@ const Banner = () => {
                                 </div>
                             )}
                         </div>
-                        <div className="song-card-container" >
+                        <div
+                            className="song-card-container"
+                            style={{
+                                marginTop: suggestions.length > 0 ? "200px" : "50px"
+                            }}
+                        >
                             {antiSongs.length > 0 && !loading && (
-                                <AntiSongColumn antiSongs={antiSongs} />)
-                            }
+                                <AntiSongColumn antiSongs={antiSongs} />
+                            )}
                         </div>
                     </Col>
                 </Row>

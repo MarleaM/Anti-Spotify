@@ -16,3 +16,20 @@ h1{
   color: aliceblue !important;
   padding: 50px 60px;
 }
+
+/* scroll bar */
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(240, 248, 255, 0.458);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#c86a708e, #192d678b);
+  border: 2px solid rgba(240, 248, 255, 0.458);
+  border-radius: 10px;
+}

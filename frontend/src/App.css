@@ -129,6 +129,7 @@
 
 .song-card-container {
   transition: margin-top 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: margin-top 0.3s ease-in-out;
 }
 
 /* Button */
