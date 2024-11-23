@@ -1,3 +1,5 @@
+
+/* contains links to resources found on our repo and a statement */
 const Footer = () => {
     return (
         <div className="footer-container">
