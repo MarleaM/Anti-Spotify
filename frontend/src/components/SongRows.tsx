@@ -1,17 +1,36 @@
 import { useState } from "react";
 import SongCard from "./SongCard";
 import MainSongCard from "./MainSongCard";
+/* 
+This component creates the rows of songs displayed after the user inputs a song.  
+It calls MainSongCard, which creates a large song card dedicated to the song the user searched,
+then it calls SongCard 8x. (four for the antirecomendations, four for the recomendations).
+Note that the way that they are displayed is dependent on how this component is fed input data.
+We assume that the object input array consists of 9 items: the 0th containing the info of the main 
+song, the 1st - 4th containing info for the antirecomendations, and the 5th - 8th containing
+info for the recomendations.
 
+For styling: primarily located in App.css "Individual Song Cards" section
+
+the input that we expect:
+    song_name: string; // name of song
+    artist: string; // name of artist
+    album_cover: string; // URL of album cover image
+    preview_url: string; // URL of song preview audio
+    link_url: string; // URL to Spotify's page for the song
+    isPlaying: boolean; // keeps track of if a song's preview is currently playing
+    onPlayPause: (previewUrl: string | null) => void; // callback to toggle play/pause
+*/
 const SongRows = ({ antiSongs }: { antiSongs: { song_name: string; artist: string; album_cover: string; preview_url: string; link_url: string; }[] }) => {    
     
     const [currentPlayingUrl, setCurrentPlayingUrl] = useState<string | null>(null);
-    
-     
-     const handlePlayPause = (previewUrl: string | null) => {
+    /* handles whether or not to pause the song */
+    const handlePlayPause = (previewUrl: string | null) => {
         setCurrentPlayingUrl((prevUrl) => (prevUrl === previewUrl ? null : previewUrl));
     };
     
     return (
+        /* create the main song card */
         <div className="title">
             <div className = "main-song-fade-in">
                 <div className="main-song-div">
@@ -26,7 +45,7 @@ const SongRows = ({ antiSongs }: { antiSongs: { song_name: string; artist: strin
                         />
                 </div>
             </div>
-
+            {/* create the anti recommendation song cards */}
             <div className = "song-fade-in">
                 <h1>Anti-Recommendations</h1>
                 <div className="song-row">
@@ -76,7 +95,7 @@ const SongRows = ({ antiSongs }: { antiSongs: { song_name: string; artist: strin
                     </div>
                 </div>
             </div>
-
+            {/* create the normal recommendation song cards */}
             <h1 className ="recommendations-heading"> Recommendations </h1>
             <div className = "song-fade-in">
                 <div className="song-row">

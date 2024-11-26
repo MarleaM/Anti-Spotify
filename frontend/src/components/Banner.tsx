@@ -4,6 +4,12 @@ import axios from 'axios';
 import AntiSongColumn from "./SongRows.tsx";
 import debounce from 'lodash.debounce';
 
+/*
+This is the component that handles the bulk of the rendering of the web-app. 
+This component handles userinput, making calls to the backend python script,
+and creating the return song cards.
+*/
+
 type Song = {
     song_name: string;
     artist: string;
@@ -20,6 +26,7 @@ const Banner = () => {
     const [suggestions, setSuggestions] = useState<Song[]>([]);
     const searchBoxRef = useRef<HTMLDivElement | null>(null);
 
+    /* function that calls the backend script */
     const getAntiSongs = (songName: string) => {
         if (!songName) return;
         setLoading(true);
@@ -37,6 +44,7 @@ const Banner = () => {
             });
     };
 
+    /* function that gets suggestions for the user when they search in the input bar */
     const getSuggestions = (searchInput: string) => {
         if (!searchInput.trim()) {
             setSuggestions([]);
@@ -82,6 +90,8 @@ const Banner = () => {
                         <span className="tagline">
                             Anti-Spotify
                         </span>
+
+                        {/* logic for the search bar */}
                         <div className="input-container">
                             <input
                                 type="text"
@@ -133,6 +143,7 @@ const Banner = () => {
                                 </div>
                             )}
                         </div>
+                        {/* if there is valid input, create a ./SongRows.tsx component (imported as AntiSongColumn) */}
                         <div
                             className="song-card-container"
                             style={{

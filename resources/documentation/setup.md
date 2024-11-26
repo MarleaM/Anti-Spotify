@@ -29,7 +29,7 @@ Access token is a string containing the credentials that allow you to make API c
 Now, replace <> with your device details and run the command below to set up a file in your folder:
 
 ```python
- cd /<your_folder_for_git_clones>/OSS_Project/backend/
+ cd /<your_folder_for_git_clones>/Anti-Spotify/backend/
  touch .env
 ```
 You should see an empty .env file being created in the "backend" folder
@@ -49,7 +49,7 @@ Now, your Spotify access tocken is set up!
 We recomend setting up a virtual environment for installing your python dependencies.
 CD into backend, your path should look something like:
 ```python
- ~/your_folder_for_git_clones/OSS_Project/backend
+ ~/your_folder_for_git_clones/Anti-Spotify/backend
 ```
 
 Run this command to setup your virtual environment:
@@ -86,7 +86,7 @@ To set up your frontend, you will need to download node.js. It can be found here
 
 Now, cd into frontend. Your path should look like this:
 ```
- ~/your_folder_for_git_clones/OSS_Project/frontend
+ ~/your_folder_for_git_clones/Anti-Spotify/frontend
 ```
 
 run this command to download the dependencies:

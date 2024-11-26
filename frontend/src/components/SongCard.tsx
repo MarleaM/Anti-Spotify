@@ -2,6 +2,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { useRef, useEffect } from 'react';
 
+/*
+This is a component that builds the individual song cards that displays
+song info to the user. These are the (relatively) smaller ones.
+ 
+For styling: primarily located in App.css "Individual Song Cards" section
+*/
+
 /* props for SongCard components (this is what each song card will store) */
 type SongCardProps = {
     song_name: string; // name of song
