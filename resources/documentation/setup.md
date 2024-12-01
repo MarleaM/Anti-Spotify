@@ -1,8 +1,6 @@
-# How to get Anti_Spotify Working on your Local Environment
+# How to get OffBeets Working on your Local Environment
 
-blah blah blah git clone stuff
-
-Make sure to do the setup steps in this order.
+First, make sure you have forked and cloned the repo into your desired directory. Then, follow the setup steps in this order.
 
 ## Backend
 
@@ -25,11 +23,11 @@ Access token is a string containing the credentials that allow you to make API c
 - Click on the Settings button
 - The Client ID can be found here. The Client Secret can be found behind the View client secret link.
 
-#### 4)  Link Your Access Token with Anti-Spotify Backend
+#### 4)  Link Your Access Token with OffBeets Backend
 Now, replace <> with your device details and run the command below to set up a file in your folder:
 
 ```python
- cd /<your_folder_for_git_clones>/Anti-Spotify/backend/
+ cd /<your_folder_for_git_clones>/OffBeets/backend/
  touch .env
 ```
 You should see an empty .env file being created in the "backend" folder
@@ -49,7 +47,7 @@ Now, your Spotify access tocken is set up!
 We recomend setting up a virtual environment for installing your python dependencies.
 CD into backend, your path should look something like:
 ```python
- ~/your_folder_for_git_clones/Anti-Spotify/backend
+ ~/your_folder_for_git_clones/OffBeets/backend
 ```
 
 Run this command to setup your virtual environment:
@@ -86,7 +84,7 @@ To set up your frontend, you will need to download node.js. It can be found here
 
 Now, cd into frontend. Your path should look like this:
 ```
- ~/your_folder_for_git_clones/Anti-Spotify/frontend
+ ~/your_folder_for_git_clones/OffBeets/frontend
 ```
 
 run this command to download the dependencies:
