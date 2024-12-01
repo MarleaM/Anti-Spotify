@@ -1,4 +1,4 @@
-![Text reading Anti-Spotify, with a red X on "Anti"](frontend/logo.png)
+![Text reading Anti-Spotify, with a red X on "Anti"](frontend/src/assets/logo5.png)
 
 # OffBeets 🚫🎶
 
