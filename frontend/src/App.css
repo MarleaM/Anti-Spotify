@@ -27,7 +27,7 @@
 }
 
 /* Placing the X on top of Anti*/
-.tagline {
+/* .tagline {
   position: relative; 
   display: inline-block; 
   pointer-events: none;
@@ -44,7 +44,7 @@
   background-image: url('./assets/ex.png'); 
   background-size: contain; 
   background-repeat: no-repeat;
-}
+} */
 
 .tagline, .searched-song {
   color: white;
@@ -60,7 +60,7 @@
   display: flex; 
   align-items: center; 
   gap: 10px; 
-  width: 500px; 
+  width: 700px; 
   margin: 0 auto; 
 }
 
@@ -70,7 +70,6 @@
   border-radius: 10px;
   width: 100%;
   padding: .75rem;  
-  margin-right: 10px;  
   caret-color: rgba(255, 255, 255, 0.6);  
   color: #ffffff;
   position: relative;
@@ -86,12 +85,18 @@
   }
 }
 
+.input-container img {
+  width: 60px; 
+  height: auto; 
+}
+
 .search_suggestion {
   position: absolute;  
   top: 100%;
   background: rgba(255, 255, 255, 0.4);
   border-radius: 10px;
-  width: 79%;
+  width: 67%;
+  margin-left: 10%;
   max-height: 250px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7); 
   font-weight: normal;
@@ -141,7 +146,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;  
   padding: 0.75rem;  
-  margin-left: 10px;
+  margin-left: 5px;
   user-select: none;
 }
 

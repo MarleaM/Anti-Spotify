@@ -3,7 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import axios from 'axios';
 import AntiSongColumn from "./SongRows.tsx";
 import debounce from 'lodash.debounce';
-
+import beetroot from '../assets/beetroot.png';
+import beetroot_flip from '../assets/beetroot_flip.png';
 /*
 This is the component that handles the bulk of the rendering of the web-app. 
 This component handles userinput, making calls to the backend python script,
@@ -87,12 +88,17 @@ const Banner = () => {
             <Container>
                 <Row className="align-items-center">
                     <Col>
-                        <span className="tagline">
-                            Anti-Spotify
-                        </span>
+                    <div className="headline">
+                        
+                            <span className="tagline">
+                                OffBeets 
+                            </span>
+                        
+                    </div>
 
                         {/* logic for the search bar */}
                         <div className="input-container">
+                            <img src={beetroot_flip}></img>
                             <input
                                 type="text"
                                 placeholder="Enter a song"
@@ -142,6 +148,7 @@ const Banner = () => {
                                     ))}
                                 </div>
                             )}
+                            <img src={beetroot}></img>
                         </div>
                         {/* if there is valid input, create a ./SongRows.tsx component (imported as AntiSongColumn) */}
                         <div
