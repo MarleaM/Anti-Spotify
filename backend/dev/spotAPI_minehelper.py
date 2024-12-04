@@ -127,15 +127,14 @@ def mine_playlist(playlist_url, batch_size=50, max_workers=1):
 
                     if track_id:
                         all_track_ids.append(track_id)
-
-                    track_data = {
-                        'Track Name': track_name,
-                        'Artist': artist_names,
-                        'Album': album_name,
-                        'Thumbnail URL': thumbnail_url,
-                        'id': track_id
-                    }
-                    data.append(track_data)
+                        track_data = {
+                            'Track Name': track_name,
+                            'Artist': artist_names,
+                            'Album': album_name,
+                            'Thumbnail URL': thumbnail_url,
+                            'id': track_id
+                        }
+                        data.append(track_data)
 
                 track_pbar.update(1)
 

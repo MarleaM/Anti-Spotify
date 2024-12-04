@@ -7,7 +7,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 # import dev.spotAPI_base
 # import dev.spotAPI_minehelper
 # import dev.spotAPI_recSystem
-from dev.spotAPI_recSystem import get_recs
+from dev.spotAPI_recSystem import get_recs, get_suggestions_DF
 
 app = Flask(__name__, static_folder='static')
 cors = CORS(app, origins='*')
@@ -43,7 +43,7 @@ def get_songs():
                     "song_name": row["Track Name"],
                     "artist": row["Artist"],
                     "album_cover": row["Thumbnail URL"],
-                    "preview_url": row["Preview URL"],
+                    "preview_url": "",
                     "link_url": row["Link URL"]
                 }
                 for _, row in result.iterrows()
@@ -51,29 +51,58 @@ def get_songs():
         }
     )
 
-@app.route("/api/suggestions", methods=['GET'])
-@cache.cached(timeout=300, query_string=True)
-def get_suggestions():
-    """Endpoint to return search suggestions for a song"""
-    query = request.args.get('query')
+# @app.route("/api/suggestions", methods=['GET'])
+# @cache.cached(timeout=300, query_string=True)
+# def get_suggestions():
+#     """Endpoint to return search suggestions for a song"""
+#     query = request.args.get('query')
 
+#     if not query:
+#         return jsonify({"error": "Please provide a search query"}), 400
+
+#     try:
+#         results = sp.search(q=query, type='track', limit=10) 
+#         suggestions = [
+#             {
+#                 "song_name": track["name"],
+#                 "artist": ", ".join([artist["name"] for artist in track["artists"]]),
+#                 "album_cover": track["album"]["images"][0]["url"] if track["album"]["images"] else None,
+#                 "preview_url": track["preview_url"],
+#                 "link_url": track["external_urls"]["spotify"]
+#             }
+#             for track in results["tracks"]["items"]
+#         ]
+
+#         return jsonify({"suggestions": suggestions})
+
+#     except Exception as e:
+#         print(f"Error fetching suggestions: {e}")
+#         return jsonify({"error": "Failed to fetch suggestions"}), 500
+
+@app.route("/api/suggestions", methods=['GET'])
+def get_suggestions():
+    query = request.args.get('query')
     if not query:
         return jsonify({"error": "Please provide a search query"}), 400
 
     try:
-        results = sp.search(q=query, type='track', limit=10) 
-        suggestions = [
+        suggestions_df = get_suggestions_DF(query)
+
+        if suggestions_df.empty:
+            return jsonify({"suggestions": [], "message": "No matching songs found."}), 200
+
+        suggestions_list = [
             {
-                "song_name": track["name"],
-                "artist": ", ".join([artist["name"] for artist in track["artists"]]),
-                "album_cover": track["album"]["images"][0]["url"] if track["album"]["images"] else None,
-                "preview_url": track["preview_url"],
-                "link_url": track["external_urls"]["spotify"]
+                "song_name": row["Track Name"],
+                "artist": row["Artist"],
+                "album_cover": row["Thumbnail URL"],
+                "preview_url": "",
+                "link_url": row["Link URL"]
             }
-            for track in results["tracks"]["items"]
+            for _, row in suggestions_df.iterrows()
         ]
 
-        return jsonify({"suggestions": suggestions})
+        return jsonify({"suggestions": suggestions_list}), 200
 
     except Exception as e:
         print(f"Error fetching suggestions: {e}")
