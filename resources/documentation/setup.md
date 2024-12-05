@@ -6,17 +6,17 @@ First, make sure you have forked and cloned the repo into your desired directory
 
 ### Spotify API Set-up
 
-First, to run the backend script and make Web API calls, you need to have an access Token from Spoftiy. 
+First, to run the backend script and make Web API calls, you need to have an access token from Spotify. 
 
 #### 1) Set Up Your Account
 
 First, create an account at the Spotify Developer Dashboard: https://developer.spotify.com/dashboard
 
 #### 2) Create an App
-Go on your Dashboard (https://developer.spotify.com/dashboard), click on "Create an app" button
+Go on your Dashboard (https://developer.spotify.com/dashboard) and click on the "Create an app" button
 
 #### 3) Request an Access Token
-Access token is a string containing the credentials that allow you to make API calls to Spotify's database and retrieve song data (e.g artists, albums or tracks) or user's data (e.g your profile or your playlists).
+An access token is a string containing the credentials that allow you to make API calls to Spotify's database and retrieve song data (e.g artists, albums or tracks) or user's data (e.g your profile or your playlists).
 
 - Go to the Dashboard
 - Click on the name of the app you have just created (My App)
@@ -42,10 +42,10 @@ SPOTIFY_CLIENT_SECRET=<paste your client secret here>
 Now, your Spotify access tocken is set up!
 
 
-### Virtual Envrionment
+### Virtual Environment
 
-We recomend setting up a virtual environment for installing your python dependencies.
-CD into backend, your path should look something like:
+We recommend setting up a virtual environment for installing your python dependencies.
+CD into backend. Your path should look like this:
 ```python
  ~/your_folder_for_git_clones/OffBeets/backend
 ```
@@ -56,12 +56,12 @@ python3 -m venv virtual_environment #for this example, we called our virtual env
 ```
 When the environemt is done setting up, run this command to activate it:
 
-windows: 
+Windows: 
 ```python
 virtual_environment/Scripts/activate
 ```
 
-mac:
+Mac:
 
 ```python
 source virtual_environment/bin/activate
@@ -87,17 +87,17 @@ Now, cd into frontend. Your path should look like this:
  ~/your_folder_for_git_clones/OffBeets/frontend
 ```
 
-run this command to download the dependencies:
+Run this command to download the dependencies:
 ```
 npm install
 ```
 
-now, to activate, do npm run dev:
+To activate, run the following command:
 ```
 npm run dev
 ``` 
 
 Now, you should be ready!
 
-ctrl + click on the link in your terminal, and you will be able to access the site.
+Ctrl + click on the link in your terminal, and you will be able to access the site.
 
