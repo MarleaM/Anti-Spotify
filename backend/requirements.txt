@@ -1,0 +1,9 @@
+Flask
+Flask_CORS
+spotipy
+python-dotenv
+pandas
+seaborn
+scikit-learn
+tqdm
+flask_caching
