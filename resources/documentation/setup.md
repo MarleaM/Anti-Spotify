@@ -57,7 +57,7 @@ make install
 
 Then, run the script:
 ```bash
-make install
+make run
 ```
 Wait for a few moments, and you should see a "Debugger PIN". That means your backend is up and ready! 
 
