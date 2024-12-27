@@ -51,33 +51,20 @@ CD into backend. Your path should look like this:
 ```
 
 Run this command to setup your virtual environment:
-```python
-python3 -m venv virtual_environment #for this example, we called our virtual environment "virtual_environment"
-```
-When the environemt is done setting up, run this command to activate it:
-
-Windows: 
-```python
-virtual_environment/Scripts/activate
+```bash
+make install
 ```
 
-Mac:
-
-```python
-source virtual_environment/bin/activate
-```
-
-Now, you must install the following packages. This might take a few minutes:
-
-```python
-pip install Flask Flask_CORS spotipy python-dotenv pandas seaborn scikit-learn tqdm flask_caching              
-```
 Then, run the script:
-```python
-python3 backend.py
+```bash
+make run
 ```
 Wait for a few moments, and you should see a "Debugger PIN". That means your backend is up and ready! 
 
+To clean the virtual environment and cache files: 
+```bash
+make clean
+```
 
 ## Frontend
 To set up your frontend, you will need to download node.js. It can be found here: https://nodejs.org/en
